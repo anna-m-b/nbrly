@@ -111,7 +111,7 @@ const Profile = ({
         <UserImg src={profileImage} alt="user" />
 
         <h1>{name}</h1>
-        {isThisUser && <EditProfileLink>Edit Profile</EditProfileLink>}
+
         {!isThisUser && (
           <SmallHeading>
             {" "}

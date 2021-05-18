@@ -8,6 +8,7 @@ import ErrorMessage from "../ErrorMessage";
 import { withRouter } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
 import { successToast, errorToast } from "../../util/ErrorNotification";
+import { Link } from "react-router-dom";
 
 import {
   LoginForm,
@@ -172,10 +173,12 @@ const SignUp = ({
 
   return (
     <LoginForm onSubmit={handleSubmit}>
-      <Banner>
-        <ImgIcon src="../images/Mess3.png" alt="navbar-logo" />
-        <Header>NBRLY</Header>
-      </Banner>
+      <Link to="/">
+        <Banner>
+          <ImgIcon src="../images/Mess3.png" alt="navbar-logo" />
+          <Header>NBRLY</Header>
+        </Banner>
+      </Link>
       <MainContainer>
         <UploadImageContainer>
           <ProfileImg src={imagePreview} />
