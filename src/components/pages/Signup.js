@@ -7,7 +7,7 @@ import CheckBox from "../CheckBox";
 import ErrorMessage from "../ErrorMessage";
 import { withRouter } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
-import { successToast, errorToast } from "../../util/ErrorNotification";
+import { successToast, errorToast } from "../ToastNotification";
 import { Link } from "react-router-dom";
 
 import {

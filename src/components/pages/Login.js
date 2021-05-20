@@ -15,7 +15,7 @@ import {
   LogInButton,
   LoginText,
 } from "../../styles/LoginStyles.js";
-import { errorToast } from "../../util/ErrorNotification";
+import { errorToast } from "../ToastNotification";
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);

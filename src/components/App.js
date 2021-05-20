@@ -20,10 +20,9 @@ import {
 } from "../helpers/getSearchResults";
 import useLocalStorage from "../customHooks/useLocalStorage";
 import { getUserById } from "../helpers/getUserById";
-import { errorToast } from "../util/ErrorNotification";
+import { errorToast } from "./ToastNotification";
 
 const App = () => {
-
   const [geolocation, setGeolocation] = useState();
   const [isOpen, setIsOpen] = useState(false);
   const [orderedMatches, setOrderedMatches] = useLocalStorage(
@@ -51,7 +50,9 @@ const App = () => {
 
   const getSearchResults = async (activity) => {
     if (!geolocation) {
-      errorToast("Sorry, something went wrong. Please refresh your browser.");
+      errorToast(
+        "Sorry, something went wrong. Please check you have location enabled and refresh your browser."
+      );
       return;
     }
     const userList = await getMatchedUsers(activity);
@@ -93,9 +94,7 @@ const App = () => {
                 longitude: position.coords.longitude,
               });
             });
-         
           } else if (result.state === "denied") {
-            
             errorToast(
               "NBRLY needs your location to work. Please update your browser preferences."
             );
@@ -134,7 +133,6 @@ const App = () => {
           </Route>
           <Route exact path="/Home">
             <Home
-              geolocation={geolocation}
               updateLocation={updateLocation}
               getSearchResults={getSearchResults}
               orderedMatches={orderedMatches}
