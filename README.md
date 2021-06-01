@@ -99,7 +99,7 @@ We also started off importing Firebase goodies in whichever component we needed 
 
 ### Things To Improve
 
-**In The UI**  
+**UX**  
   
 _Styling_  
 The whole site could use some polish, but especially the Profile page needs a nice design.
@@ -107,6 +107,10 @@ In the sign up form, instead of using checkboxes, we'd like to use the toggle to
 
 <img src="./tokens-example.png" alt="toggle tokens example" title="toggle tokens example" width="200" />
 <br><br>
+
+_Handling LaCk of Location Permissions_  
+It would be great to have a button or pop up that could straight away enable the user to quickly turn on location permissions, instead of how it is currently where the user has to go into their browser preferences.
+
 
 **In Our Code**  
   
