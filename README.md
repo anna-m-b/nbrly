@@ -108,7 +108,7 @@ In the sign up form, instead of using checkboxes, we'd like to use the toggle to
 <img src="./tokens-example.png" alt="toggle tokens example" title="toggle tokens example" width="300" />
 <br><br>
 
-_Handling LaCk of Location Permissions_  
+_Handling Lack of Location Permissions_  
 It would be great to have a button or pop up that could straight away enable the user to quickly turn on location permissions, instead of how it is currently where the user has to go into their browser preferences.
 
 
