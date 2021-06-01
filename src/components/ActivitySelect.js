@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import interests from '../lib/interests';
+import React from 'react'
+import styled from 'styled-components'
+import interests from '../lib/interests'
 
 const DropMenuWrap = styled.div`
 height: 80px:
@@ -13,7 +13,7 @@ font-size: 1rem;
 @media screen and (max-width: 960px) {
   transition: 0.8s all ease;
 }
-`;
+`
 
 const ActivitySelect = ({ handleActivitySelect }) => {
   const options = interests.map((interest) => {
@@ -21,8 +21,8 @@ const ActivitySelect = ({ handleActivitySelect }) => {
       <option key={interest} value={interest}>
         {interest}
       </option>
-    );
-  });
+    )
+  })
 
   return (
     <>
@@ -37,7 +37,7 @@ const ActivitySelect = ({ handleActivitySelect }) => {
         </select>
       </DropMenuWrap>
     </>
-  );
-};
+  )
+}
 
-export default ActivitySelect;
+export default ActivitySelect

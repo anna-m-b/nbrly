@@ -1,47 +1,41 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { useParams } from "react-router-dom";
-import withAuth from "../withAuth";
-import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import geodist from "geodist";
-import { useAuth } from "../../contexts/AuthContext";
-import { Button } from "../../styles/SignUpStyles";
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
+import withAuth from '../withAuth'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import geodist from 'geodist'
+import { useAuth } from '../../contexts/AuthContext'
+import { Button } from '../../styles/SignUpStyles'
 
 const UserImg = styled.img`
   width: 15em;
   height: 15em;
   border-radius: 50%;
   object-fit: cover;
-`;
+`
 
 const UserCard = styled.div`
   padding-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const EditProfileLink = styled.a`
-  background: #ffd74b;
-  padding: 0.4em;
-  font-weight: bold;
-`;
+`
 
 const SmallHeading = styled.p`
   color: #ffb800;
   font-weight: bold;
   font-size: 0.9em;
-`;
+`
 
-const ProfileText = styled.p``;
+const ProfileText = styled.p``
 
 const UserBio = styled.div`
   padding: 2em 10em;
   @media (max-width: 768px) {
     padding: 2em 4em;
   }
-`;
+`
 
 const Profile = ({
   geolocation,
@@ -50,26 +44,26 @@ const Profile = ({
   thisUserProfile,
 }) => {
   const initialState = {
-    profileImage: "../images/profileplaceholder.png",
-    name: "",
-    aboutMe: "",
-    interests: "",
-    age: "",
-    distance: "",
-    email: "",
-  };
+    profileImage: '../images/profileplaceholder.png',
+    name: '',
+    aboutMe: '',
+    interests: '',
+    age: '',
+    distance: '',
+    email: '',
+  }
 
-  const [userData, setUserData] = useState(initialState);
-  const { userID } = useParams();
+  const [userData, setUserData] = useState(initialState)
+  const { userID } = useParams()
   const { profileImage, name, aboutMe, interests, age, distance, email } =
-    userData;
-  const { currentUser } = useAuth();
-  const isThisUser = currentUser.uid === userID;
+    userData
+  const { currentUser } = useAuth()
+  const isThisUser = currentUser.uid === userID
 
   useEffect(() => {
     let user = isThisUser
       ? thisUserProfile
-      : orderedMatches.find((user) => user.uid === userID);
+      : orderedMatches.find((user) => user.uid === userID)
     const {
       firstName,
       lastName,
@@ -80,11 +74,11 @@ const Profile = ({
       latitude,
       longitude,
       email,
-    } = user;
+    } = user
 
-    const interestsString = interests.join(", ");
-    const distanceRaw = geodist(geolocation, { latitude, longitude });
-    const distance = distanceRaw + 1;
+    const interestsString = interests.join(', ')
+    const distanceRaw = geodist(geolocation, { latitude, longitude })
+    const distance = distanceRaw + 1
 
     setUserData((prev) => {
       return {
@@ -96,14 +90,14 @@ const Profile = ({
         age,
         distance,
         email,
-      };
-    });
+      }
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userID]);
+  }, [userID])
 
   useEffect(() => {
-    updateLocation();
-  }, [updateLocation]);
+    updateLocation()
+  }, [updateLocation])
 
   return (
     <>
@@ -114,14 +108,14 @@ const Profile = ({
 
         {!isThisUser && (
           <SmallHeading>
-            {" "}
+            {' '}
             <FontAwesomeIcon icon={faMapMarkerAlt} /> {`< ${distance} mi.`}
           </SmallHeading>
         )}
       </UserCard>
       {!isThisUser && (
-        <a style={{ width: "200px" }} href={`mailto: ${email}`}>
-          <Button style={{ width: "200px" }}>Contact</Button>
+        <a style={{ width: '200px' }} href={`mailto: ${email}`}>
+          <Button style={{ width: '200px' }}>Contact</Button>
         </a>
       )}
 
@@ -136,7 +130,7 @@ const Profile = ({
         <ProfileText> {age} </ProfileText>
       </UserBio>
     </>
-  );
-};
+  )
+}
 
-export default withAuth(Profile);
+export default withAuth(Profile)

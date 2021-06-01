@@ -1,14 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
-import "firebase/auth";
-import interests from "../../lib/interests";
-import { FormGroup, Input } from "reactstrap";
-import CheckBox from "../CheckBox";
-import ErrorMessage from "../ErrorMessage";
-import { withRouter } from "react-router";
-import { useAuth } from "../../contexts/AuthContext";
-import { successToast, errorToast } from "../ToastNotification";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react'
+import interests from '../../lib/interests'
+import { FormGroup, Input } from 'reactstrap'
+import CheckBox from '../CheckBox'
+import ErrorMessage from '../ErrorMessage'
+import { withRouter } from 'react-router'
+import { useAuth } from '../../contexts/AuthContext'
+import { successToast, errorToast } from '../ToastNotification'
+import { Link } from 'react-router-dom'
 
 import {
   LoginForm,
@@ -26,31 +25,29 @@ import {
   Subheading,
   TextArea,
   Button,
-} from "../../styles/SignUpStyles.js";
+} from '../../styles/SignUpStyles.js'
 
 const SignUp = ({
   geolocation,
-  logIn,
   history,
   updateLocation,
-  handleLogin,
 }) => {
   const initialState = {
     fields: {
-      firstName: "",
-      lastName: "",
-      age: "",
-      email: "",
-      confirmEmail: "",
-      password: "",
-      confirmPassword: "",
-      aboutMe: "",
+      firstName: '',
+      lastName: '',
+      age: '',
+      email: '',
+      confirmEmail: '',
+      password: '',
+      confirmPassword: '',
+      aboutMe: '',
     },
     interestsSelectors: interests.map((interest) => {
-      return { value: interest, isChecked: false };
+      return { value: interest, isChecked: false }
     }),
-    selectedFile: "../images/profileplaceholder.png",
-    imagePreview: "../images/profileplaceholder.png",
+    selectedFile: '../images/profileplaceholder.png',
+    imagePreview: '../images/profileplaceholder.png',
     errors: {
       firstName: false,
       lastName: false,
@@ -64,67 +61,68 @@ const SignUp = ({
       emailsMismatch: false,
       passwordsMismatch: false,
     },
-  };
+  }
 
-  const [fields, setFields] = useState(initialState.fields);
+  const [fields, setFields] = useState(initialState.fields)
   const [interestsSelectors, setInterestsSelectors] = useState(
     initialState.interestsSelectors
-  );
-  const [selectedFile, setSelectedFile] = useState(initialState.selectedFile);
-  const [imagePreview, setImagePreview] = useState(initialState.imagePreview);
-  const [errors, setErrors] = useState(initialState.errors);
+  )
+  const [selectedFile, setSelectedFile] = useState(initialState.selectedFile)
+  const [imagePreview, setImagePreview] = useState(initialState.imagePreview)
+  const [errors, setErrors] = useState(initialState.errors)
   const errorMessages = {
-    blank: "Field cannot be blank",
-    checkboxes: "Please tick at least one",
+    blank: 'Field cannot be blank',
+    checkboxes: 'Please tick at least one',
     emailMatch: `Emails don't match`,
     passwordMatch: `Passwords don't match`,
-  };
-  const { signup } = useAuth();
+  }
+  const { signup } = useAuth()
+
   useEffect(() => {
-    updateLocation();
-  }, []);
+    updateLocation()
+  }, [])
 
   const validateForm = (userInterests) => {
     if (!geolocation) {
       errorToast(
-        "Please allow NBRLY to access your location in order to sign up"
-      );
-      return;
+        'Please allow NBRLY to access your location in order to sign up'
+      )
+      return
     }
 
-    let isFormValid = true;
+    let isFormValid = true
     const values = {
       interests: userInterests.length ? false : true,
       emailsMismatch: fields.email !== fields.confirmEmail,
       passwordsMismatch: fields.password !== fields.confirmPassword,
-    };
+    }
 
     for (const field in fields) {
       if (!fields[field]) {
-        values[field] = true;
+        values[field] = true
       }
     }
 
     for (const value in values) {
       if (values[value]) {
-        isFormValid = false;
+        isFormValid = false
       }
     }
 
-    setErrors((errors) => ({ ...errors, ...values }));
-    return isFormValid;
-  };
+    setErrors((errors) => ({ ...errors, ...values }))
+    return isFormValid
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    setErrors(initialState.errors);
-    const userInterests = [];
+    event.preventDefault()
+    setErrors(initialState.errors)
+    const userInterests = []
     interestsSelectors.forEach((interest) => {
       if (interest.isChecked) {
-        userInterests.push(interest.value);
+        userInterests.push(interest.value)
       }
-    });
-    const isFormValid = validateForm(userInterests);
+    })
+    const isFormValid = validateForm(userInterests)
     if (isFormValid) {
       const profileData = {
         firstName: fields.firstName,
@@ -134,42 +132,42 @@ const SignUp = ({
         interests: userInterests,
         latitude: geolocation.latitude,
         longitude: geolocation.longitude,
-      };
+      }
       try {
-        await signup(profileData, selectedFile, fields.email, fields.password);
-        successToast("Your profile was successfully created!");
-        history.push("/Home");
+        await signup(profileData, selectedFile, fields.email, fields.password)
+        successToast('Your profile was successfully created!')
+        history.push('/Home')
       } catch (error) {
-        console.error(error);
-        errorToast("Sorry, something went wrong. Please refresh your browser.");
+        console.error(error)
+        errorToast('Sorry, something went wrong. Please refresh your browser.')
       }
     }
-  };
+  }
 
   const handleFieldChange = (event) => {
-    setFields({ ...fields, [event.target.name]: event.target.value });
-  };
+    setFields({ ...fields, [event.target.name]: event.target.value })
+  }
 
   const handleBoxChange = (event) => {
-    const { name, defaultChecked } = event.target;
+    const { name, defaultChecked } = event.target
 
     if (defaultChecked) {
       setInterestsSelectors((items) => {
-        items.find((item) => item.value === name).isChecked = false;
-        return [...items];
-      });
+        items.find((item) => item.value === name).isChecked = false
+        return [...items]
+      })
     } else {
       setInterestsSelectors((items) => {
-        items.find((item) => item.value === name).isChecked = true;
-        return [...items];
-      });
+        items.find((item) => item.value === name).isChecked = true
+        return [...items]
+      })
     }
-  };
+  }
 
   const fileSelectedHandler = (event) => {
-    setImagePreview(URL.createObjectURL(event.target.files[0]));
-    setSelectedFile(event.target.files[0]);
-  };
+    setImagePreview(URL.createObjectURL(event.target.files[0]))
+    setSelectedFile(event.target.files[0])
+  }
 
   return (
     <LoginForm onSubmit={handleSubmit}>
@@ -185,7 +183,7 @@ const SignUp = ({
           <CustomFileUpload>
             Choose image
             <input
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               type="file"
               accept="image/png, image/jpeg"
               onChange={fileSelectedHandler}
@@ -303,7 +301,7 @@ const SignUp = ({
                     .isChecked
                 }
               />
-            );
+            )
           })}
         </CheckboxesWrap>
       </InterestsWrap>
@@ -321,7 +319,7 @@ const SignUp = ({
       ></TextArea>
       <Button type="submit">Create Profile</Button>
     </LoginForm>
-  );
-};
+  )
+}
 
-export default withRouter(SignUp);
+export default withRouter(SignUp)

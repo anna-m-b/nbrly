@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { FormGroup, Label, Input } from "reactstrap";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
+import React, { useState } from 'react'
+import { FormGroup, Label, Input } from 'reactstrap'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../../contexts/AuthContext'
 import {
   FormContainer,
   TopContainer,
@@ -14,33 +14,33 @@ import {
   GetStartedDiv,
   LogInButton,
   LoginText,
-} from "../../styles/LoginStyles.js";
-import { errorToast } from "../ToastNotification";
+} from '../../styles/LoginStyles.js'
+import { errorToast } from '../ToastNotification'
 
 const LoginPage = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false)
   const [fields, setFields] = useState({
-    email: "",
-    password: "",
-  });
+    email: '',
+    password: '',
+  })
 
-  const { login } = useAuth();
+  const { login } = useAuth()
 
   const handleFieldChange = (event) => {
-    setFields({ ...fields, [event.target.name]: event.target.value });
-  };
+    setFields({ ...fields, [event.target.name]: event.target.value })
+  }
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleLogin = (e) => {
+    e.preventDefault()
+    setLoading(true)
     try {
-      await login(fields.email, fields.password);
+      login(fields.email, fields.password)
     } catch (err) {
-      console.log(err);
-      errorToast("Please check email and password are correct.");
+      console.error(err)
+      errorToast('Please check email and password are correct.')
     }
-    setLoading(false);
-  };
+    setLoading(false)
+  }
 
   return (
     <FormContainer>
@@ -94,7 +94,7 @@ const LoginPage = () => {
         </FormWrapper>
       </BottomContainer>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default LoginPage;
+export default LoginPage

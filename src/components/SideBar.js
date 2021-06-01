@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import styled from 'styled-components'
+import { FaTimes } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const SidebarContainer = styled.aside`
   position: fixed;
@@ -16,10 +16,10 @@ const SidebarContainer = styled.aside`
   transition: 0.3s ease-in-out;
   opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
   top: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
-`;
+`
 const CloseIcon = styled(FaTimes)`
   color: white;
-`;
+`
 
 const Icon = styled.div`
   position: absolute;
@@ -29,11 +29,11 @@ const Icon = styled.div`
   font-size: 2rem;
   cursor: pointer;
   outline: none;
-`;
+`
 
 const SidebarWrapper = styled.div`
   color: red;
-`;
+`
 const SidebarMenu = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
@@ -43,7 +43,7 @@ const SidebarMenu = styled.ul`
   @media screen and (max-width 480px) {
     grid-template-rows: repeat(6, 60px);
   }
-`;
+`
 
 const SidebarLink = styled(Link)`
     display: flex;
@@ -62,7 +62,7 @@ const SidebarLink = styled(Link)`
         color: #CFCFCF;
         transition: 0.2s ease-in-out;
     }
-`;
+`
 
 const LogoutLink = styled.a`    
     display: flex;
@@ -80,7 +80,7 @@ const LogoutLink = styled.a`
     &:hover{
         color: #CFCFCF;
         transition: 0.2s ease-in-out;
-    }`;
+    }`
 
 const SideBar = ({ isOpen, toggle, handleLogout, uid }) => {
   return (
@@ -103,7 +103,7 @@ const SideBar = ({ isOpen, toggle, handleLogout, uid }) => {
         </SidebarWrapper>
       </SidebarContainer>
     </>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

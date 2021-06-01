@@ -1,5 +1,5 @@
-import ResultItem from './ResultItem';
-import styled from 'styled-components';
+import ResultItem from './ResultItem'
+import styled from 'styled-components'
 
 const ResultsWrap = styled.div`
   width: 90%;
@@ -8,7 +8,7 @@ const ResultsWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 const ResultsText = styled.p`
   color: #ffb800;
@@ -18,7 +18,7 @@ const ResultsText = styled.p`
   @media screen and (max-width: 700px) {
     font-size: 0.8rem;
   }
-`;
+`
 
 const Results = ({ orderedMatches, selectedActivity }) => {
   const searchResults = orderedMatches.map((user) => {
@@ -31,8 +31,8 @@ const Results = ({ orderedMatches, selectedActivity }) => {
         pic="./images/profileplaceholder.png"
         email={user.email}
       />
-    );
-  });
+    )
+  })
 
   return (
     <>
@@ -47,7 +47,7 @@ const Results = ({ orderedMatches, selectedActivity }) => {
         )}
       </ResultsWrap>
     </>
-  );
-};
+  )
+}
 
-export default Results;
+export default Results

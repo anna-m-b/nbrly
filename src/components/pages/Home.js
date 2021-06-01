@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import ActivitySelect from '../ActivitySelect';
-import Results from '../Results';
-import withAuth from '../withAuth';
-import useLocalStorage from '../../customHooks/useLocalStorage';
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import ActivitySelect from '../ActivitySelect'
+import Results from '../Results'
+import withAuth from '../withAuth'
+import useLocalStorage from '../../customHooks/useLocalStorage'
 
 const TitleHomeWrap = styled.div`
 
@@ -18,27 +18,23 @@ align-items: center;
   transition: 0.8s all ease;
   text-align: center;
 }
-`;
+`
 
-const Home = ({
-  updateLocation,
-  getSearchResults,
-  orderedMatches,
-}) => {
+const Home = ({ updateLocation, getSearchResults, orderedMatches }) => {
   const [selectedActivity, setSelectedActivity] = useLocalStorage(
     'selectedActivity',
     'Choose an activity'
-  );
+  )
 
   useEffect(() => {
-    updateLocation();
-  }, [updateLocation]);
+    updateLocation()
+  }, [updateLocation])
 
   const handleActivitySelect = (event) => {
-    const { value } = event.target;
-    setSelectedActivity(value);
-    getSearchResults(value);
-  };
+    const { value } = event.target
+    setSelectedActivity(value)
+    getSearchResults(value)
+  }
 
   return (
     <>
@@ -54,7 +50,7 @@ const Home = ({
         selectedActivity={selectedActivity}
       />
     </>
-  );
-};
+  )
+}
 
-export default withAuth(Home);
+export default withAuth(Home)

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FaBars } from 'react-icons/fa';
-import { withRouter } from 'react-router';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { FaBars } from 'react-icons/fa'
+import { withRouter } from 'react-router'
 
 const Nav = styled.nav`
 background: #CFCFCF;
@@ -20,13 +20,13 @@ z-index: 10;
 @media screen and (max-width: 960px) {
   transition: 0.8s all ease;
 }
-`;
+`
 
 const Banner = styled.div`
   display: flex;
   justify-content: left;
   width: 50%;
-`;
+`
 const NavLogo = styled.div`
   color: white;
   font-size: 2rem;
@@ -36,7 +36,7 @@ const NavLogo = styled.div`
   font-weight: bold;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
-`;
+`
 const ImgIcon = styled.div`
   display: flex;
   justify-content: center;
@@ -48,7 +48,7 @@ const ImgIcon = styled.div`
   @media screen and (max-width: 460px) {
     left: 160px;
   }
-`;
+`
 const MobileIcon = styled.div`
   display: none;
   @media screen and (max-width: 760px) {
@@ -61,7 +61,7 @@ const MobileIcon = styled.div`
     cursor: pointer;
     color: white;
   }
-`;
+`
 const NavMenu = styled.ul`
   display: flex;
   align-items: center;
@@ -70,11 +70,11 @@ const NavMenu = styled.ul`
   @media screen and (max-width: 760px) {
     display: none;
   }
-`;
+`
 const NavItem = styled.li`
   height: 80px;
   //border: 1px solid red;
-`;
+`
 const NavLinks = styled(Link)`
   color: white;
   font-weight: bold;
@@ -89,7 +89,7 @@ const NavLinks = styled(Link)`
   &.active {
     border-bottom: 3px solid red;
   }
-`;
+`
 
 const LogoutLink = styled.a`
   color: white;
@@ -105,21 +105,20 @@ const LogoutLink = styled.a`
   &.active {
     border-bottom: 3px solid red;
   }
-`;
+`
 
 const Navbar = ({ toggle, handleLogout, currentUserUid }) => {
-  
   return (
     <>
       <Nav>
         <Banner>
           <Link to="/">
-          <ImgIcon>
-            <img src="../images/Mess3.png" alt="navbar-logo" />
-          </ImgIcon>
+            <ImgIcon>
+              <img src="../images/Mess3.png" alt="navbar-logo" />
+            </ImgIcon>
           </Link>
-          <Link to="/" style={{ textDecoration: "none"}}>
-          <NavLogo>NBRLY</NavLogo>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <NavLogo>NBRLY</NavLogo>
           </Link>
         </Banner>
         <MobileIcon onClick={toggle}>
@@ -127,17 +126,29 @@ const Navbar = ({ toggle, handleLogout, currentUserUid }) => {
         </MobileIcon>
         <NavMenu>
           <NavItem>
-            <NavLinks to="/Home" style={{ textDecoration: "none"}}>Home</NavLinks>
+            <NavLinks to="/Home" style={{ textDecoration: 'none' }}>
+              Home
+            </NavLinks>
           </NavItem>
           <NavItem>
-            <NavLinks to={`/Profile/${currentUserUid}`} style={{ textDecoration: "none"}}>My Profile</NavLinks>
+            <NavLinks
+              to={`/Profile/${currentUserUid}`}
+              style={{ textDecoration: 'none' }}
+            >
+              My Profile
+            </NavLinks>
           </NavItem>
           <NavItem>
-            <LogoutLink onClick={handleLogout} style={{ textDecoration: "none"}}>Logout</LogoutLink>
+            <LogoutLink
+              onClick={handleLogout}
+              style={{ textDecoration: 'none' }}
+            >
+              Logout
+            </LogoutLink>
           </NavItem>
         </NavMenu>
       </Nav>
     </>
-  );
-};
-export default withRouter(Navbar);
+  )
+}
+export default withRouter(Navbar)

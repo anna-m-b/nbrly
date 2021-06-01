@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const Label = styled.label`
   margin: 5px 15px 5px 3px;
-`;
+`
 
 const Input = styled.input`
   margin: 5px;
   justify-self: start;
   align-self: center;
-`;
+`
 
 const CheckBox = ({ name, defaultChecked = false, onChange }) => {
   return (
@@ -24,7 +24,7 @@ const CheckBox = ({ name, defaultChecked = false, onChange }) => {
       />
       <Label htmlFor={name}>{name}</Label>
     </>
-  );
-};
+  )
+}
 
-export default CheckBox;
+export default CheckBox
