@@ -3,7 +3,14 @@
 Our group's final project for the Manchester Codes Software Engineering Fast Track course.
 
 NBRLY connects you to people in your vicinity so you can find like-minded folk to have fun with.
-
+  
+See it live: https://nbrly-six.vercel.app/  
+ 
+You can log in with our fake account:  
+  
+email: janet@thegoodplace.com  
+password: thegoodplace  
+  
 ---
 
 ## Tech Stack
