@@ -105,14 +105,14 @@ _Styling_
 The whole site could use some polish, but especially the Profile page needs a nice design.
 In the sign up form, instead of using checkboxes, we'd like to use the toggle tokens approach:
 
-<img src="./tokens-example.png" alt="toggle tokens example" title="toggle tokens example" width="200" />
+<img src="./tokens-example.png" alt="toggle tokens example" title="toggle tokens example" width="300" />
 <br><br>
 
 _Handling LaCk of Location Permissions_  
 It would be great to have a button or pop up that could straight away enable the user to quickly turn on location permissions, instead of how it is currently where the user has to go into their browser preferences.
 
 
-**In Our Code**  
+**Code**  
   
 *Testing*  
 We didn't take TDD approach because we could see if the site was working as intended and get by with human point-and-click testing. However, if we had adopted TDD, we may have been led into a more productive and effective mindeset. Writing out tests lends itself well to breaking down processes and clarifying understanding, leading to better organised and more readable code. It would also make it easier to keep working on the project, especially after some time has passed, by quickly highlighting where any new changes introduce errors.  
